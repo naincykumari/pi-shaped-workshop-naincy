@@ -8,3 +8,8 @@ A Docker image is a blueprint or template. A container is a running instance of 
 
 **3. How does Kubernetes complement Docker when running at scale?**  
 Kubernetes automates deployment, scaling, and management of containerized applications. It provides features like load balancing, service discovery, and self-healing, making it ideal for running hundreds of Docker containers in production.
+
+
+## Link of my public docker hub image
+
+**https://hub.docker.com/r/naincy04/hello-world-api**

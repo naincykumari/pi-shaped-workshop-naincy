@@ -1,4 +1,4 @@
-# Day 1 Assignment – Kubernetes Deployment
+# Day 2 Assignment – Kubernetes Deployment
 
 ## ✅ Core Concepts
 

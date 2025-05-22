@@ -14,20 +14,6 @@ spec:
       labels:
         app: hello-world
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - node1  
-      tolerations:
-        - key: "workload"
-          operator: "Equal"
-          value: "day1"
-          effect: "NoSchedule"
       containers:
         - name: hello-world-container
           image: naincy04/hello-world-api:latest

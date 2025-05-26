@@ -2,41 +2,38 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world-api
-  labels:
-    app: hello-world
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: hello-world
+      app: hello-world-api
   template:
     metadata:
       labels:
-        app: hello-world
+        app: hello-world-api
     spec:
+      containers:
+      - name: hello-world-api
+        image: naincy04/hello-world-api:day1
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - minikube
+            - matchExpressions:
+              - key: disktype
+                operator: In
+                values:
+                - ssd
       tolerations:
-        - key: "workload"
-          operator: "Equal"
-          value: "day1"
-          effect: "NoSchedule"
-      containers:
-        - name: hello-world-container
-          image: naincy04/hello-world-api:latest
-          ports:
-            - containerPort: 8080
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
+      - key: "key1"
+        operator: "Exists"
+        effect: "NoSchedule"

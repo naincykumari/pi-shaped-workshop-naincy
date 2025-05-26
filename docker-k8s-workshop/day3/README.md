@@ -43,7 +43,7 @@ $ echo "$(minikube ip) hello-world.local" | sudo tee -a /etc/hosts
 
 | Access Type  | URL                                | Expected Response        |
 |--------------|------------------------------------|--------------------------|
-| NodePort     | http://<minikube-ip>:30036         | JSON message from API    |
+| NodePort     | http://minikube-ip:30036         | JSON message from API    |
 | Ingress      | http://hello-world.local/hello     | JSON message from API    |
 | PortForward  | http://localhost:8081              | JSON message from API    |
  

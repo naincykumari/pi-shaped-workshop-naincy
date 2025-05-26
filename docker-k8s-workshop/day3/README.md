@@ -29,7 +29,7 @@ An Ingress named `hello-world-ingress` is set up using the Minikube Ingress addo
 It exposes the app on path-based routing:
 
 - **Host**: `hello-world.local`
-- **Path**: `/hello` → forwards to `hello-world-clusterip` on port 80
+- **Path**: `/hello` → forwards to `hello-world-clusterip` on port 81
 
 Enable Ingress Addon: 
 
@@ -45,5 +45,5 @@ $ echo "$(minikube ip) hello-world.local" | sudo tee -a /etc/hosts
 |--------------|------------------------------------|--------------------------|
 | NodePort     | http://<minikube-ip>:30036         | JSON message from API    |
 | Ingress      | http://hello-world.local/hello     | JSON message from API    |
-| PortForward  | http://localhost:8080              | JSON message from API    |
+| PortForward  | http://localhost:8081              | JSON message from API    |
  

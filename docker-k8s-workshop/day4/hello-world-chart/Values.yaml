@@ -1,0 +1,13 @@
+replicaCount: 3
+
+image:
+  repository: naincy04/hello-world-api
+  tag: day1
+
+service:
+  port: 8080
+
+ingress:
+  enabled: true
+  host: hello-app.local
+  path: /hello  

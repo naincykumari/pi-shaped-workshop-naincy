@@ -2,7 +2,7 @@
 
 This Helm chart packages the Kubernetes manifests for the Hello World API application.
 
-## 🚀 Installation
+## Installation
 
 ```bash
 helm install hello-app ./hello-world-chart

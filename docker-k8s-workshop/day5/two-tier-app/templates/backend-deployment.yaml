@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "two-tier-app.fullname" . }}-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ include "two-tier-app.name" . }}-backend
+  template:
+    metadata:
+      labels:
+        app: {{ include "two-tier-app.name" . }}-backend
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.backend.image }}:{{ .Values.backend.tag }}"
+          args: {{ .Values.backend.args }}
+          ports:
+            - containerPort: 5678
+          resources: {{- toYaml .Values.backend.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.backend.probes.path }}
+              port: {{ .Values.backend.probes.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.backend.probes.path }}
+              port: {{ .Values.backend.probes.port }}
+            initialDelaySeconds: 3
+            periodSeconds: 5
